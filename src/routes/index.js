@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const project = require('../projects.json')
+const equipo = require('../equipo.json')
+
 
 // colocar las rutas aquí
 router.get('/', (req, res) => {
@@ -15,14 +17,14 @@ router.get('/project', (req, res) => {
     res.render('project', {project})
 })
 
-
-router.get('/team/lucas', (req, res) => {
-    res.send("Este es Lucas")
+router.get('/team', (req, res) => {
+    res.render('team', {equipo})
 })
 
 router.get('/team/:name', (req, res) => {
     const {name} = req.params
-    res.send('conoce al miembro del equipo ' + name)
+    const user = equipo.find(user => user.name === name)
+    res.render('team-member', {name, user})
 })
 
 router.get('/project/:id', (req, res) => {

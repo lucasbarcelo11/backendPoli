@@ -1,0 +1,9 @@
+<h1>Estos son los miembros del equipo</h1>
+
+<ul>
+    {{#each equipo}}
+        <li>
+            <a href="/team/{{this.name}}">{{this.name}}</a>
+        </li>
+    {{/each}}
+</ul>
